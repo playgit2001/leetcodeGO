@@ -6,5 +6,5 @@ import (
 
 func main() {
 	var s int = 12121
-	print(function.IsPalindrome1(s))
+	print(function.IsPalindrome2(s))
 }

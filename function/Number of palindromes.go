@@ -18,3 +18,31 @@ func IsPalindrome1(x int) bool {
 	}
 	return true
 }
+
+//第二种，反转数字法，不通过转字符串的方式，采用反转一半数字的方式。
+//比如说，1221，我们截取21，把他构造成12，如果首12=构造12，那么这个是回文数
+//首先是排除边界情况，个位数是0以及负数不可能是回文数。
+//我们先把数字%10，余数不断乘10，累加上去，直到取了一半数。
+//判断是否到达一半的方式，则是构造的数是否等于被不断整除后的原始数
+
+func IsPalindrome2(x int) bool {
+	if x < 0 || x%10 == 0 {
+		return false
+	}
+	var res int = 0
+	for !(res == x || res > x) {
+		res = res*10 + x%10
+		x = x / 10
+		fmt.Println("%c ,%c", res, x)
+	}
+	if res == x {
+		return true
+	}
+
+	if res > x {
+		if res/10 == x {
+			return true
+		}
+	}
+	return false
+}
